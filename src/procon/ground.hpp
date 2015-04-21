@@ -65,12 +65,10 @@ namespace procon{
 		static std::array<std::string, 32> read_ground(std::ifstream &ifs)
 		{
 			std::array<std::string, 32> result;
-			std::string line;
 			int i;
 
 			for(i = 0; i < 32 && ifs; i++){
-				std::getline(ifs, line);
-				result[i] = line;
+				std::getline(ifs, result[i]);
 			}
 
 			if(i != 32)
