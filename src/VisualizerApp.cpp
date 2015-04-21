@@ -53,6 +53,9 @@ void VisualizerApp::draw()
 				c = Color(0, 0, 0);
 			}
 
+			gl::color(Color(0.5f, 0.5f, 0.5f));
+			gl::drawStrokedRect(Rectf(j * 5, i * 5, (j + 1) * 5, (i + 1) * 5));
+
 			gl::color(c);
 			gl::drawSolidRect(Rectf(j * 5, i * 5, (j + 1) * 5, (i + 1) * 5));
 		}
