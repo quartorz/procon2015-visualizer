@@ -42,21 +42,20 @@ void VisualizerApp::update()
 
 void VisualizerApp::draw()
 {
-	// clear out the window with black
+	// clear out the window with white
 	gl::clear( Color( 1.f, 1.f, 1.f ) ); 
 
 	for(int i = 0; i < procon::ground_size; i++){
 		for(int j = 0; j < procon::ground_size; j++){
-			Color c(1.f, 1.f, 1.f);
-
-			if(_ground[i][j].is_barrier()){
-				c = Color(0, 0, 0);
-			}
-
 			gl::color(Color(0.5f, 0.5f, 0.5f));
 			gl::drawStrokedRect(Rectf(j * 5, i * 5, (j + 1) * 5, (i + 1) * 5));
 
-			gl::color(c);
+			if(_ground[i][j].is_empty()){
+				gl::color(Color(1.f, 1.f, 1.f));
+			}else if(_ground[i][j].is_barrier()){
+				gl::color(Color(0.f, 0.f, 0.f));
+			}
+
 			gl::drawSolidRect(Rectf(j * 5, i * 5, (j + 1) * 5, (i + 1) * 5));
 		}
 	}

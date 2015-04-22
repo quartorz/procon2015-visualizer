@@ -39,7 +39,7 @@ namespace procon{
 			init_array();
 		}
 
-		ground(std::array<std::string, 32> ground)
+		ground(std::array<std::string, ground_size> ground)
 		{
 			init_array();
 			for(int i = 0; i < ground_size; i++){
@@ -62,9 +62,9 @@ namespace procon{
 			return _array[index];
 		}
 
-		static std::array<std::string, 32> read_ground(std::ifstream &ifs)
+		static std::array<std::string, ground_size> read_ground(std::ifstream &ifs)
 		{
-			std::array<std::string, 32> result;
+			std::array<std::string, ground_size> result;
 			int i;
 
 			for(i = 0; i < 32 && ifs; i++){
