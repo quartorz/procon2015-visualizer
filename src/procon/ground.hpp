@@ -1,13 +1,15 @@
 #pragma once
 
+#include "cell.hpp"
+#include "constant.hpp"
+
+#include "../nonzero_based_array.hpp"
+
 #include <fstream>
 #include <string>
 #include <array>
 #include <stdexcept>
-#include "../nonzero_based_array.hpp"
-
-#include "cell.hpp"
-#include "constant.hpp"
+#include <iomanip>
 
 namespace procon{
 	class ground{
@@ -32,14 +34,14 @@ namespace procon{
 
 	public:
 		ground(const ground &) = default;
-		ground &operator=(const ground &rhs) = default;
+		ground &operator=(const ground &) = default;
 
 		ground()
 		{
 			init_array();
 		}
 
-		ground(std::array<std::string, ground_size> ground)
+		ground(const std::array<std::string, ground_size> &ground)
 		{
 			init_array();
 			for(int i = 0; i < ground_size; i++){
@@ -62,16 +64,16 @@ namespace procon{
 			return _array[index];
 		}
 
-		static std::array<std::string, ground_size> read_ground(std::ifstream &ifs)
+		static std::array<std::string, ground_size> read(std::ifstream &ifs)
 		{
 			std::array<std::string, ground_size> result;
 			int i;
 
-			for(i = 0; i < 32 && ifs; i++){
+			for(i = 0; i < ground_size && ifs; i++){
 				std::getline(ifs, result[i]);
 			}
 
-			if(i != 32)
+			if(i != ground_size)
 				throw std::runtime_error("invalid problem file format");
 
 			return result;

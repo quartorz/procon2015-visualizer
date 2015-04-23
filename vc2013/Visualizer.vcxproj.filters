@@ -44,6 +44,12 @@
     <ClInclude Include="..\src\procon\constant.hpp">
       <Filter>Header Files\procon</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\procon\stone.hpp">
+      <Filter>Header Files\procon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\procon\utility.hpp">
+      <Filter>Header Files\procon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc">

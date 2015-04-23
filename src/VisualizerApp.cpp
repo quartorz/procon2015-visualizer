@@ -5,6 +5,8 @@
 #include <stdexcept>
 
 #include "procon/ground.hpp"
+#include "procon/stone.hpp"
+#include "procon/utility.hpp"
 #include "procon/constant.hpp"
 
 using namespace ci;
@@ -12,6 +14,7 @@ using namespace ci::app;
 
 class VisualizerApp : public AppNative {
 	procon::ground _ground;
+	std::vector<procon::stone> _stones;
 
 public:
 	void setup();
@@ -29,7 +32,7 @@ void VisualizerApp::setup()
 		throw std::runtime_error("cannot open " + path.string());
 	}
 
-	_ground = procon::ground(procon::ground::read_ground(ifs));
+	std::tie(_ground, _stones) = procon::read_problem(ifs);
 }
 
 void VisualizerApp::mouseDown( MouseEvent event )
